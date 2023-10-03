@@ -2,13 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'home',
+   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-
     path: 'historial-cliente',
     loadChildren: () => import('./pages/historial-cliente/historial-cliente.module').then( m => m.HistorialClientePageModule)
   },
@@ -31,18 +27,6 @@ const routes: Routes = [
   {
     path: 'centro-ayuda',
     loadChildren: () => import('./pages/centro-ayuda/centro-ayuda.module').then( m => m.CentroAyudaPageModule)
-  },
-
-
-
-
-  {
-    path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
-  },
-  {
-    path: 'forgot-password',
-    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
 ];
 @NgModule({
