@@ -1,0 +1,52 @@
+ion-content{
+    font-family: 'Poppins', sans-serif;
+    --background:linear-gradient(#a7a7a7,#a7a7a7);
+}
+
+image-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  
+oval-button {
+    background-color: #2d4862; /* Color azul oscuro */
+    width: 60px; /* Ancho del botón */
+    height: 60px; /* Alto del botón */
+    border-radius: 80% !important; /* Hace que el botón tenga forma ovalada */
+    margin: 5px; /* Espacio entre los botones */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Agregar margen (padding) a los elementos ion-col */
+ion-col {
+    padding: 10px; /* Espacio entre las imágenes y los botones */
+  }
+
+button-box {
+    text-align: left; /* Alinea el contenido hacia la izquierda */
+    margin-left: 1px; /* Agrega un margen izquierdo para ajustar la posición */
+  }
+  
+ion-icon {
+    font-size: 30px; /* Tamaño del icono */
+    color: white; /* Color del icono */
+  }
+
+.button-text {
+    font-size: 0.5em; /* Tamaño del texto en unidades em */
+    color: white; /* Color del texto */
+    margin-top: 2px; /* Espacio entre el ícono y el texto */
+    margin-left: 5px; /* Ajusta el margen izquierdo para mover el texto a la derecha */
+  }
+  
+button-text {
+    margin-top: 5px; /* Espacio entre el ícono y el texto */
+    margin-left: 1px; /* Ajusta el margen izquierdo para mover el texto a la derecha */
+  }
+  
+  
+  
