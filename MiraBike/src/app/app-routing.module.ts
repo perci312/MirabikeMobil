@@ -28,6 +28,15 @@ const routes: Routes = [
     path: 'centro-ayuda',
     loadChildren: () => import('./pages/centro-ayuda/centro-ayuda.module').then( m => m.CentroAyudaPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+
 
 
 
