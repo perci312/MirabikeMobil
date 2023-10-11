@@ -25,10 +25,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mi-cuenta/mi-cuenta.module').then( m => m.MiCuentaPageModule)
   },
   {
-    path: 'centro-ayuda',
-    loadChildren: () => import('./pages/centro-ayuda/centro-ayuda.module').then( m => m.CentroAyudaPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
