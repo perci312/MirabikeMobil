@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'homes-menu', pathMatch: 'full' },
   { path: 'home',
    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
@@ -29,9 +29,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'registro',
-    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+    path: 'homes-menu',
+    loadChildren: () => import('./pages/homes-menu/homes-menu.module').then( m => m.HomesMenuPageModule)
+  },  {
+    path: 'historial-cliente',
+    loadChildren: () => import('./pages/historial-cliente/historial-cliente.module').then( m => m.HistorialClientePageModule)
   },
+
+
+
 
 
 
