@@ -5,12 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MysqlService {
-  private apiUrl = 'http://localhost/conexion_segun_ia/db.php';
+  private apiUrl = 'https://vd2djqqrt8.execute-api.us-east-2.amazonaws.com/Consulta_tablas';
 
   constructor(private http: HttpClient) { }
 
   getClientes() {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get(`${this.apiUrl}/app_cliente`);
   }
 }
+
 
