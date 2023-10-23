@@ -1,0 +1,7 @@
+{
+    "/consulta_tablas/conectar_base_datos_mysql/*": {
+        "target": "https://vd2djqqrt8.execute-api.us-east-2.amazonaws.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

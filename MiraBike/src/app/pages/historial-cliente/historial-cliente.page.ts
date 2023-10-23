@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./historial-cliente.page.scss'],
 })
 export class HistorialClientePage implements OnInit {
-  datosAppCliente: any[] = []; // Inicializa la propiedad para almacenar los datos
+  datosAppCliente: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -16,12 +16,13 @@ export class HistorialClientePage implements OnInit {
   }
 
   obtenerDatosAppCliente() {
-    const apiUrl = 'https://vd2djqqrt8.execute-api.us-east-2.amazonaws.com/consulta_tablas/conectar_base_datos_mysql/app_cliente';
-  
+    const apiUrl = 'https://tnlkxyinql.execute-api.us-east-2.amazonaws.com/cliente';
+
     this.http.get(apiUrl).subscribe(
       (response: any) => {
-        if (response.data && Array.isArray(response.data)) {
-          this.datosAppCliente = response.data; // Asegúrate de asignarlos a la propiedad correcta (datosAppCliente)
+        const responseBody = JSON.parse(response.body);
+        if (Array.isArray(responseBody)) {
+          this.datosAppCliente = responseBody;
         } else {
           console.error('Error: Los datos no están en el formato esperado.');
         }
@@ -31,8 +32,8 @@ export class HistorialClientePage implements OnInit {
       }
     );
   }
-  
 }
+
 
 
 

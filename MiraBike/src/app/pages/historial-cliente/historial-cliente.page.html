@@ -9,29 +9,32 @@
   </div>
 </ion-header>
 
-<!-- tu-componente.component.html -->
+<ion-content>
+  <div *ngIf="datosAppCliente && datosAppCliente.length > 0">
+    <h1>Historial cliente</h1>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>RUT</th>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+        </tr>
+        <tr *ngFor="let dato of datosAppCliente">
+          <td>{{ dato.rut_cliente }}</td>
+          <td>{{ dato.nombre_cliente }}</td>
+          <td>{{ dato.apePaterno }}</td>
+          <td>{{ dato.apeMaterno }}</td>
+          <td>{{ dato.email }}</td>
+          <td>{{ dato.fono }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="!datosAppCliente || datosAppCliente.length === 0">
+    <p>No se encontraron datos de app_cliente.</p>
+  </div>
+</ion-content>
 
-<div *ngIf="datosAppCliente && datosAppCliente.length > 0">
-  <h1>Datos de app_cliente</h1>
-  <table>
-    <tr>
-      <th>RUT</th>
-      <th>Nombre</th>
-      <th>Apellido Paterno</th>
-      <th>Apellido Materno</th>
-      <th>Email</th>
-      <th>Teléfono</th>
-    </tr>
-    <tr *ngFor="let dato of datosAppCliente">
-      <td>{{ dato.rut_cliente }}</td>
-      <td>{{ dato.nombre_cliente }}</td>
-      <td>{{ dato.apePaterno }}</td>
-      <td>{{ dato.apeMaterno }}</td>
-      <td>{{ dato.email }}</td>
-      <td>{{ dato.fono }}</td>
-    </tr>
-  </table>
-</div>
-<div *ngIf="!datosAppCliente || datosAppCliente.length === 0">
-  <p>No se encontraron datos de app_cliente.</p>
-</div>
