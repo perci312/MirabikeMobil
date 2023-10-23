@@ -1,0 +1,36 @@
+/* Estilos para la lista de trabajos */
+ion-list {
+    padding: 10px;
+  }
+  
+  /* Estilos para los elementos de la lista */
+  ion-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para el título del trabajo */
+  h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  /* Estilos para las descripciones */
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  /* Estilos para el mensaje de "No se encontraron trabajos" */
+  p {
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* Estilos para el mensaje de "No se encontraron trabajos" cuando no hay datos */
+  p {
+    color: #888;
+  }
+  

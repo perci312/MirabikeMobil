@@ -1,58 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title color="Shade"> Taller </ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true">
+  <div>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title color="primary">Trabajos del Taller</ion-title>
+    </ion-toolbar>
+  </div>
 </ion-header>
 
 <ion-content>
-  <ion-button  color="tertiary" size="small">Trabajos activos</ion-button>
-  <ion-button color="medium" size="small">Trabajos anteriores</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let dato of datosAppTaller">
+      <ion-label>
+        <h2>{{ dato.nombre_trabajo }}</h2>
+        <p>Descripción: {{ dato.descripcion }}</p>
+        <p>Valor: {{ dato.valor }}</p>
+        <p>Estado: {{ dato.estado }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
   
-  <ion-content color="light">
-    <ion-list [inset]="true">
-  
-      <ion-item>
-        <ion-icon name="cart-outline"></ion-icon>
-          <ion-label>
-            <h6>producto</h6>  
-            <h6>02/10/2023</h6>
-          </ion-label>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="cart-outline"></ion-icon>
-        <ion-label>
-          <h6>producto</h6>  
-          <h6>02/10/2023</h6>
-        </ion-label>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="cart-outline"></ion-icon>
-        <ion-label> 
-          <h6>producto</h6>  
-          <h6>02/10/2023</h6>
-        </ion-label>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="cart-outline"></ion-icon>
-        <ion-label> 
-          <h6>producto</h6>  
-          <h6>02/10/2023</h6>
-        </ion-label>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="cart-outline"></ion-icon>
-        <ion-label> 
-          <h6>producto</h6>  
-          <h6>02/10/2023</h6>
-        </ion-label>
-      </ion-item>
-  
-    </ion-list>
-  </ion-content>
+  <div *ngIf="!datosAppTaller || datosAppTaller.length === 0">
+    <p>No se encontraron trabajos en el taller.</p>
+  </div>
+</ion-content>
