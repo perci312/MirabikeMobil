@@ -1,16 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>trabajadores</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
+    <ion-title color="primary">Lista de Trabajadores</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">trabajadores</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div *ngIf="datosAppPersona && datosAppPersona.length > 0">
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Nombre de Usuario</th>
+          <th>RUT del Colaborador</th>
+          <th>Nombre Completo</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Tipo de Perfil</th>
+        </tr>
+        <tr *ngFor="let trabajador of datosAppPersona">
+          <td>{{ trabajador.nomUsuario }}</td>
+          <td>{{ trabajador.rut_colaborador }}</td>
+          <td>{{ trabajador.nombre_completo }}</td>
+          <td>{{ trabajador.fono }}</td>
+          <td>{{ trabajador.email }}</td>
+          <td>{{ trabajador.tipo_perfil }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="!datosAppPersona || datosAppPersona.length === 0">
+    <p>No se encontraron datos de trabajadores.</p>
+  </div>
 </ion-content>
