@@ -31,9 +31,14 @@ const routes: Routes = [
   {
     path: 'homes-menu',
     loadChildren: () => import('./pages/homes-menu/homes-menu.module').then( m => m.HomesMenuPageModule)
-  },  {
+  },
+  {
     path: 'historial-cliente',
     loadChildren: () => import('./pages/historial-cliente/historial-cliente.module').then( m => m.HistorialClientePageModule)
+  },
+  {
+    path: 'ayuda',
+    loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
   },
 
 
