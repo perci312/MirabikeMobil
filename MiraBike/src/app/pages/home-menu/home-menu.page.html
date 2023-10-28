@@ -5,70 +5,56 @@
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
     </div>
-    
-    
   </ion-header>
 
-
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>
-        Menú de Aplicación
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
   <ion-content class="ion-padding">
     <div class="image-container">
       <!-- Coloca aquí tu imagen -->
       <img src="/assets/imagen/logo.png" alt="Imagen">
     </div>
-    
+
     <div class="button-container">
       <ion-row class="ion-justify-content-center">
         <ion-col size="4" class="ion-text-center">
-          <ion-button class="oval-button">
+          <ion-button class="oval-button" (click)="navigateToHistorialClientes()">
             <ion-icon name="people-outline"></ion-icon>
+            <p class="button-text">Historial clientes</p>
           </ion-button>
-          <p class="button-text">Historial clientes</p>
         </ion-col>
         <ion-col size="4" class="ion-text-center">
-          <ion-button class="oval-button">
+          <ion-button class="oval-button" (click)="navigateToHistorialVentas()">
             <ion-icon name="bar-chart-outline"></ion-icon>
+            <p class="button-text">Historial ventas</p>
           </ion-button>
-          <p class="button-text">Historial ventas</p>
         </ion-col>
         <ion-col size="4" class="ion-text-center">
-          <ion-button class="oval-button">
+          <ion-button class="oval-button" (click)="navigateToTrabajosTaller()">
             <ion-icon name="bicycle-outline"></ion-icon>
+            <p class="button-text">Trabajos taller</p>
           </ion-button>
-          <p class="button-text">Trabajos taller</p>
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <ion-col size="4" class="ion-text-center">
-          <ion-button class="oval-button">
+          <ion-button class="oval-button" (click)="navigateToTrabajadores()">
             <ion-icon name="man-outline"></ion-icon>
+            <p class="button-text">Trabajadores</p>
           </ion-button>
-          <p class="button-text">Trabajadores</p>
         </ion-col>
         <ion-col size="4" class="ion-text-center">
-          <ion-button class="oval-button">
+          <ion-button class="oval-button" (click)="navigateToMiCuenta()">
             <ion-icon name="person-outline"></ion-icon>
+            <p class="button-text">Mi cuenta</p>
           </ion-button>
-          <p class="button-text">Mi cuenta</p>
         </ion-col>
         <ion-col size="4" class="ion-text-center">
-          <ion-button class="oval-button">
+          <ion-button class="oval-button" (click)="navigateToAyuda()">
             <ion-icon name="chatbubble-outline"></ion-icon>
+            <p class="button-text">Ayuda</p>
           </ion-button>
-          <p class="button-text">Ayuda</p>
         </ion-col>
       </ion-row>
     </div>
   </ion-content>
-  
-    
-
 </ion-content>
 
