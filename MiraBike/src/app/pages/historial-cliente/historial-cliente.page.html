@@ -4,12 +4,25 @@
       <ion-buttons slot="start">
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
-      <ion-title color="primary">Historial</ion-title>
+      <ion-title color="primary">Historial cliente</ion-title>
     </ion-toolbar>
   </div>
 </ion-header>
 
 <ion-content>
+  
+    <ion-row>
+      <ion-col size="8">
+        <ion-input placeholder="Filtrar Rut"></ion-input>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="full">Buscar</ion-button>
+      </ion-col>
+    </ion-row>
+  
+    <!-- Tu tabla de datos -->
+  
+  
   <div *ngIf="datosAppCliente && datosAppCliente.length > 0">
     
     <div class="table-container">

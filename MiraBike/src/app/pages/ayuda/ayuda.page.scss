@@ -1,0 +1,22 @@
+ion-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    ion-card-header {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+  
+    ion-card-content {
+      padding: 10px;
+  
+      br {
+        margin: 5px 0;
+      }
+    }
+  }
+  

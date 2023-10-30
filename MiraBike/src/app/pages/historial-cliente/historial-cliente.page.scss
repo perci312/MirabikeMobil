@@ -1,42 +1,45 @@
 /* Agrega estilos para la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+  width: 100%;
+  border-collapse: collapse;
+}
 
 /* Estilos para limitar el ancho de las celdas */
 table, th, td {
-    max-width: 150px; /* Ajusta el valor según tus necesidades */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  max-width: 150px; /* Ajusta el valor según tus necesidades */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  /* Estilos para hacer que el contenedor de la tabla sea desplazable */
+/* Estilos para hacer que el contenedor de la tabla sea desplazable */
 .table-container {
-    overflow-x: auto;
-    max-width: 100%; /* Esto asegura que la tabla no sea más ancha que el contenedor */
-  }
-  
-  /* Agrega estilos para las celdas de la tabla */
-  table, th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-  }
-  
-  /* Agrega un fondo de color a la fila encabezado */
-  th {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  /* Agrega un fondo de color a filas impares */
-  tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-  
-  /* Cambia el color de las celdas cuando se pasa el ratón por encima */
-  tr:hover {
-    background-color: #e0e0e0;
-  }
+  overflow-x: auto;
+  overflow-y: auto; /* Agrega desplazamiento vertical */
+  max-width: 100%; /* Esto asegura que la tabla no sea más ancha que el contenedor */
+  max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+}
+
+/* Agrega estilos para las celdas de la tabla */
+table, th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+/* Agrega un fondo de color a la fila encabezado */
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Agrega un fondo de color a filas impares */
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Cambia el color de las celdas cuando se pasa el ratón por encima */
+tr:hover {
+  background-color: #e0e0e0;
+}
+
   
