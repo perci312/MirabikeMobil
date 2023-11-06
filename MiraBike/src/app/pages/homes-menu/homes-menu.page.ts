@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homes-menu',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomesMenuPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  cerrarSesion() {
+    // Puedes agregar lógica adicional aquí, como borrar tokens de autenticación, etc.
+    // Luego, redirige al usuario a la página de inicio de sesión
+    this.router.navigate(['/the-login']);
+  }
 }
+

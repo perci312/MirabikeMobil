@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as Chart from "chart.js";
+
 
 @Component({
   selector: 'app-historial-ventas',

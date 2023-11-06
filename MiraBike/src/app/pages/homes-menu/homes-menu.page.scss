@@ -48,3 +48,16 @@ button-text {
     margin-left: 1px; /* Ajusta el margen izquierdo para mover el texto a la derecha */
   }
   
+  /* Reducir el tamaño del botón */
+.boton-cerrar-sesion {
+  font-size: 12px; /* Tamaño de fuente más pequeño */
+  padding: 6px 12px; /* Ajustar el relleno (padding) según tus preferencias */
+}
+
+/* Ajustar la posición del botón hacia abajo */
+#boton-cerrar-sesion {
+  position: absolute;
+  bottom: 150px; /* Ajustar la distancia desde la parte inferior */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translateX(-50%); /* Centrar horizontalmente */
+}
