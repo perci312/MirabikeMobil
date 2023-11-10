@@ -1,0 +1,11 @@
+<ion-content>
+  <full-calendar [options]="calendarOptions"></full-calendar>
+
+  <!-- Elemento para mostrar la información del evento -->
+  <div *ngIf="eventDetails">
+    <h3>{{ eventDetails.title }}</h3>
+    <p>Inicio: {{ eventDetails.start | date: 'longDate' }}</p>
+    <p>Fin: {{ eventDetails.end | date: 'longDate' }}</p>
+    <!-- Puedes agregar más detalles según la estructura de tus datos de eventos -->
+  </div>
+</ion-content>

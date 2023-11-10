@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; // Asegúrate de importar HttpClient si lo necesitas
+import { CalendarComponent } from '../../components/calendar/calendar.component';
+
 
 @Component({
   selector: 'app-trabajos-taller',
@@ -7,7 +9,12 @@ import { HttpClient } from '@angular/common/http'; // Asegúrate de importar Htt
   styleUrls: ['./trabajos-taller.page.scss'],
 })
 export class TrabajosTallerPage implements OnInit {
+  
   datosAppTaller: any[] = []; // Define la propiedad para almacenar los datos
+
+  
+
+  calendarComponent: CalendarComponent = new CalendarComponent();
 
   constructor(private http: HttpClient) {} // Asegúrate de inyectar HttpClient si lo necesitas
 

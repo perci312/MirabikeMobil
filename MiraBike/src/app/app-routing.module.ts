@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CalendarComponent } from './components/calendar/calendar.component';
+
+
 const routes: Routes = [
   { path: '', redirectTo: 'the-login', pathMatch: 'full' },
   { path: 'login',
@@ -39,6 +42,10 @@ const routes: Routes = [
   {
     path: 'the-login',
     loadChildren: () => import('./pages/the-login/the-login.module').then( m => m.TheLoginPageModule)
+  },
+  {
+    path: 'calendar', 
+    component: CalendarComponent,
   },
 ];
 @NgModule({

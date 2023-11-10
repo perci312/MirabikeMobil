@@ -1,0 +1,21 @@
+
+
+/* calendar.component.scss */
+
+.full-calendar {
+  /* Ajusta el tamaño del calendario según tus necesidades */
+  height: 500px;
+  width: 100%;
+  margin: 0 auto; /* Centra el calendario en el contenedor */
+
+  /* Puedes agregar más estilos según sea necesario */
+
+
+
+ 
+
+  /* Ajusta el formato de fecha para mostrar el día completo en español */
+  .fc-dayGridWeek-day, .fc-dayGridMonth-day {
+    text-align: center;
+  }
+}
