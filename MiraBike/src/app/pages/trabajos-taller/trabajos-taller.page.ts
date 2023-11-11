@@ -14,7 +14,7 @@ export class TrabajosTallerPage implements OnInit {
 
   
 
-  calendarComponent: CalendarComponent = new CalendarComponent();
+
 
   constructor(private http: HttpClient) {} // Asegúrate de inyectar HttpClient si lo necesitas
 

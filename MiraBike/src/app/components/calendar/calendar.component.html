@@ -1,11 +1,28 @@
 <ion-content>
-  <full-calendar [options]="calendarOptions"></full-calendar>
+  <ion-header [translucent]="true">
+    <div>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+    </div>
+  </ion-header>
+  <full-calendar [options]="calendarOptions" (eventClick)="handleEventClick($event)"></full-calendar>
 
   <!-- Elemento para mostrar la información del evento -->
   <div *ngIf="eventDetails">
     <h3>{{ eventDetails.title }}</h3>
-    <p>Inicio: {{ eventDetails.start | date: 'longDate' }}</p>
-    <p>Fin: {{ eventDetails.end | date: 'longDate' }}</p>
-    <!-- Puedes agregar más detalles según la estructura de tus datos de eventos -->
+    <p>Inicio: {{ eventDetails.start | date: 'medium' }}</p>
+    <p>Fin: {{ eventDetails.end | date: 'medium' }}</p>
+    
+    <!-- Verificación de existencia de propiedades -->
+    <p *ngIf="eventDetails.tipo_arreglo !== undefined">Tipo_arreglo: {{ eventDetails.tipo_arreglo }}</p>
+    <p *ngIf="eventDetails.valor !== undefined">Valor: {{ eventDetails.valor }}</p>
+    <p *ngIf="eventDetails.descripcion !== undefined">Descripcion: {{ eventDetails.descripcion }}</p>
+    <p *ngIf="eventDetails.estado !== undefined">Estado: {{ eventDetails.estado }}</p>
+    <p *ngIf="eventDetails.modelo_bicicleta !== undefined">Modelo de la bicicleta: {{ eventDetails.modelo_bicicleta }}</p>
+    <p *ngIf="eventDetails.estado_pago !== undefined">Estado de pago: {{ eventDetails.estado_pago }}</p>
   </div>
 </ion-content>
+
+
+

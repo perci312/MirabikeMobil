@@ -11,6 +11,8 @@ import { CorsInterceptor } from './cors-interceptor';
 
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
 
 @NgModule({
   declarations: [AppComponent,CalendarComponent],
