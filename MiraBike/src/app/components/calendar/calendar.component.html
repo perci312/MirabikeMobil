@@ -18,7 +18,7 @@
     <p *ngIf="eventDetails.tipo_arreglo !== undefined">Tipo_arreglo: {{ eventDetails.tipo_arreglo }}</p>
     <p *ngIf="eventDetails.valor !== undefined">Valor: {{ eventDetails.valor }}</p>
     <p *ngIf="eventDetails.descripcion !== undefined">Descripcion: {{ eventDetails.descripcion }}</p>
-    <p *ngIf="eventDetails.estado !== undefined">Estado: {{ eventDetails.estado }}</p>
+    <p *ngIf="eventDetails.estado !== undefined">Estado: {{ getEstadoText(eventDetails.estado) }}</p>
     <p *ngIf="eventDetails.modelo_bicicleta !== undefined">Modelo de la bicicleta: {{ eventDetails.modelo_bicicleta }}</p>
     <p *ngIf="eventDetails.estado_pago !== undefined">Estado de pago: {{ eventDetails.estado_pago }}</p>
   </div>

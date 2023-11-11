@@ -25,17 +25,18 @@ interface EventData {
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin],
-    events: [],
-    eventClick: this.handleEventClick.bind(this)
-  };
-
+  calendarOptions: CalendarOptions;
   eventDetails: EventData | undefined;
 
   constructor(private http: HttpClient) {
     moment.locale('es');
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      plugins: [dayGridPlugin],
+      events: [],
+      eventClick: this.handleEventClick.bind(this),
+      eventDidMount: this.eventDidMount.bind(this) // Usamos eventDidMount en lugar de eventRender
+    };
   }
 
   ngOnInit() {
@@ -51,8 +52,9 @@ export class CalendarComponent implements OnInit {
         if (Array.isArray(responseBody)) {
           // Transformar los datos antes de asignarlos
           const eventosFullCalendar: EventInput[] = responseBody.map((evento: any) => {
+            console.log(evento.tipo_arreglo); // Agrega esta línea
             return {
-              title: evento.tipo_arreglo,
+              title: String(evento.tipo_arreglo),
               start: moment(evento.fecha_ingreso).toDate(),
               end: moment(evento.fecha_termino).toDate(),
               tipo_arreglo: evento.tipo_arreglo,
@@ -60,10 +62,12 @@ export class CalendarComponent implements OnInit {
               descripcion: evento.descripcion,
               estado: evento.estado,
               modelo_bicicleta: evento.modelo_bicicleta,
-              estado_pago: evento.estado_pago
+              estado_pago: evento.estado_pago,
               // Agrega más propiedades según sea necesario
             };
           });
+          
+          
 
           // Actualiza los eventos después de cargarlos
           this.calendarOptions.events = eventosFullCalendar;
@@ -95,7 +99,65 @@ export class CalendarComponent implements OnInit {
       estado_pago: eventData.estado_pago !== undefined ? eventData.estado_pago : 0
     };
   }
+
+  eventDidMount(info: any) {
+    const eventData = info.event.extendedProps as EventData;
+
+    // Colores predeterminados
+    let backgroundColor = 'blue';
+    let textColor = 'white';
+
+    // Cambiar colores según el estado
+    switch (eventData.estado) {
+      case 0:
+        backgroundColor = 'green';
+        break;
+      case 1:
+        backgroundColor = 'black';
+        break;
+      case 2:
+        backgroundColor = 'purple';
+        break;
+    }
+
+    // Cambiar color si la fecha de término es menor al día de hoy
+    const today = moment();
+    const eventEnd = moment(info.event.end);
+    if (eventEnd.isBefore(today, 'day')) {
+      backgroundColor = 'red';
+    }
+
+    // Aplicar estilos
+    info.el.style.backgroundColor = backgroundColor;
+    info.el.style.color = textColor;
+  }
+  getEstadoText(estado: number | undefined): string {
+    if (estado !== undefined) {
+      switch (estado) {
+        case 0:
+          return 'Terminado';
+        case 1:
+          return 'En proceso';
+        case 2:
+          return 'En espera';
+        default:
+          return 'Desconocido';
+      }
+    } else {
+      return 'No definido';
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

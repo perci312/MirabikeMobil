@@ -1,10 +1,20 @@
-/* Ajusta los estilos según tu diseño y preferencias */
-.event-pasado {
+.event-verde {
+  background-color: green;
+  color: white;
+}
+
+.event-amarillo {
+  background-color: yellow;
+  color: white;
+}
+
+.event-morado {
+  background-color: purple;
+  color: white;
+}
+
+.event-rojo {
   background-color: red;
   color: white;
 }
 
-.event-futuro {
-  background-color: green;
-  color: white;
-}
