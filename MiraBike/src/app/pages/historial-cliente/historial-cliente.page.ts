@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HistorialClientePage implements OnInit {
   datosAppCliente: any[] = [];
+  filteredDatosAppCliente: any[] = [];
+  searchRut: string = '';
+  
 
   constructor(private http: HttpClient) {}
 
@@ -23,6 +26,7 @@ export class HistorialClientePage implements OnInit {
         const responseBody = JSON.parse(response.body);
         if (Array.isArray(responseBody)) {
           this.datosAppCliente = responseBody;
+          this.filteredDatosAppCliente = this.datosAppCliente; // Inicialmente, ambos son iguales
         } else {
           console.error('Error: Los datos no están en el formato esperado.');
         }
@@ -32,7 +36,28 @@ export class HistorialClientePage implements OnInit {
       }
     );
   }
+
+  // Método para aplicar el filtro
+  filterData() {
+    this.filteredDatosAppCliente = this.datosAppCliente.filter((dato) =>
+      (dato.rut_cliente || '').toString().startsWith(this.searchRut)
+    );
+  }
+
+  resetFilters() {
+    this.searchRut = ''; // Limpiar el campo de búsqueda
+    this.filteredDatosAppCliente = this.datosAppCliente; // Restablecer la lista completa
+  }
 }
+
+
+
+
+
+
+
+
+
 
 
 

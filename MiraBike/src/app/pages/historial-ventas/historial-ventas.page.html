@@ -8,25 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="datosVentas && datosVentas.length > 0">
-    <div class="table-container">
-      <table>
-        <tr>
-          <th>Fecha</th>
-          <th>Descripción</th>
-          <th>Total</th>
-          <th>Tipo de Pago</th>
-        </tr>
-        <tr *ngFor="let venta of datosVentas">
-          <td>{{ venta.fecha }}</td>
-          <td>{{ venta.descripcion }}</td>
-          <td>{{ venta.total }}</td>
-          <td>{{ venta.tipopago }}</td>
-        </tr>
-      </table>
-    </div>
+
+  <!-- Elemento para mostrar el gráfico de barras -->
+  <div class="chart-container">
+    <canvas id="barChart"></canvas>
   </div>
-  <div *ngIf="!datosVentas || datosVentas.length === 0">
-    <p>No se encontraron datos de ventas.</p>
-  </div>
+  
+
+  
+
 </ion-content>
+
+

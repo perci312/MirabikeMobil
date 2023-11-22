@@ -21,6 +21,9 @@
     <p *ngIf="eventDetails.estado !== undefined">Estado: {{ getEstadoText(eventDetails.estado) }}</p>
     <p *ngIf="eventDetails.modelo_bicicleta !== undefined">Modelo de la bicicleta: {{ eventDetails.modelo_bicicleta }}</p>
     <p *ngIf="eventDetails.estado_pago !== undefined">Estado de pago: {{ eventDetails.estado_pago }}</p>
+    <p *ngIf="eventDetails.nombre_cliente !== undefined">Cliente: {{ eventDetails.nombre_cliente }}</p>
+    <p *ngIf="eventDetails.fono !== undefined">Teléfono: <a href="https://wa.me/{{ eventDetails.fono }}" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon>{{ eventDetails.fono }}</a></p>
+    <p *ngIf="eventDetails.email !== undefined">Email: <a href="mailto:{{ eventDetails.email }}">{{ eventDetails.email }}</a></p>
   </div>
 </ion-content>
 

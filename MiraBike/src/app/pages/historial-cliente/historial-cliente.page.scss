@@ -42,4 +42,19 @@ tr:hover {
   background-color: #e0e0e0;
 }
 
+.search-button {
+  margin-top: 10px;
+  margin-right: auto;
+   
+}
+
+.search-button,
+.reset-button {
+  margin-top: 12px; /* Ajusta el espacio superior según tu preferencia */
+  //width: 200%; /* O ajusta el porcentaje de ancho según tus necesidades */
+  font-size: 14px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  border-radius: 10px; /* Ajusta el radio de borde para hacer los botones más redondeados */
+}
+
+
   

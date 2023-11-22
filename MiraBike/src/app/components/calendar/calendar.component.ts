@@ -17,6 +17,9 @@ interface EventData {
   estado?: number;
   modelo_bicicleta?: string;
   estado_pago?: number;
+  nombre_cliente?: string;
+  fono?: number;
+  email?: string;
 }
 
 @Component({
@@ -50,11 +53,9 @@ export class CalendarComponent implements OnInit {
       (response: any) => {
         const responseBody = JSON.parse(response.body);
         if (Array.isArray(responseBody)) {
-          // Transformar los datos antes de asignarlos
           const eventosFullCalendar: EventInput[] = responseBody.map((evento: any) => {
-            console.log(evento.tipo_arreglo); // Agrega esta línea
             return {
-              title: String(evento.tipo_arreglo),
+              title: String(evento.modelo_bicicleta),
               start: moment(evento.fecha_ingreso).toDate(),
               end: moment(evento.fecha_termino).toDate(),
               tipo_arreglo: evento.tipo_arreglo,
@@ -63,15 +64,13 @@ export class CalendarComponent implements OnInit {
               estado: evento.estado,
               modelo_bicicleta: evento.modelo_bicicleta,
               estado_pago: evento.estado_pago,
-              // Agrega más propiedades según sea necesario
+              nombre_cliente: evento.nombre_cliente, 
+              fono: evento.fono, 
+              email: evento.email, 
             };
           });
-          
-          
-
-          // Actualiza los eventos después de cargarlos
+  
           this.calendarOptions.events = eventosFullCalendar;
-          // Puedes guardar los datos transformados si es necesario
           this.eventDetails = eventosFullCalendar[0].extendedProps as EventData;
         } else {
           console.error('Error: Los datos no están en el formato esperado.');
@@ -96,7 +95,10 @@ export class CalendarComponent implements OnInit {
       descripcion: eventData.descripcion !== undefined ? eventData.descripcion : 'Valor por defecto',
       estado: eventData.estado !== undefined ? eventData.estado : 0,
       modelo_bicicleta: eventData.modelo_bicicleta !== undefined ? eventData.modelo_bicicleta : 'Valor por defecto',
-      estado_pago: eventData.estado_pago !== undefined ? eventData.estado_pago : 0
+      estado_pago: eventData.estado_pago !== undefined ? eventData.estado_pago : 0,
+      nombre_cliente: eventData.nombre_cliente !== undefined ? eventData.nombre_cliente : 'Valor por defecto', 
+      fono: eventData.fono !== undefined ? eventData.fono : 0, 
+      email: eventData.email !== undefined ? eventData.email : 'Valor por defecto', 
     };
   }
 

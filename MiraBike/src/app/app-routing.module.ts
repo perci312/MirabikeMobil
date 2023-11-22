@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { Line_chartComponent } from './components/line_chart/line_chart.component';
+import { Bar_chartComponent } from './components/bar_chart/bar_chart.component';
 
 
 const routes: Routes = [
@@ -46,6 +48,14 @@ const routes: Routes = [
   {
     path: 'calendar', 
     component: CalendarComponent,
+  },
+  {
+    path: 'line_chart', 
+    component: Line_chartComponent,
+  },
+  {
+    path: 'bar_chart', 
+    component: Bar_chartComponent,
   },
 ];
 @NgModule({

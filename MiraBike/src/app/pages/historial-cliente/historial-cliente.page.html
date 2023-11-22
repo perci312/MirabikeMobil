@@ -10,21 +10,25 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-row>
+    <ion-col size="8">
+      <!-- Bind al modelo de búsqueda -->
+      <ion-input placeholder="Filtrar Rut" [(ngModel)]="searchRut"></ion-input>
+    </ion-col>
+    <ion-col size="2">
+      <!-- Botón para realizar la búsqueda con tamaño pequeño -->
+      <ion-button expand="full" size="small" class="search-button" (click)="filterData()">Buscar</ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <!-- Botón de reset -->
+      <ion-button expand="full" size="small" class="reset-button" (click)="resetFilters()">Reset</ion-button>
+    </ion-col>
+  </ion-row>
   
-    <ion-row>
-      <ion-col size="8">
-        <ion-input placeholder="Filtrar Rut"></ion-input>
-      </ion-col>
-      <ion-col size="4">
-        <ion-button expand="full">Buscar</ion-button>
-      </ion-col>
-    </ion-row>
-  
-    <!-- Tu tabla de datos -->
-  
-  
-  <div *ngIf="datosAppCliente && datosAppCliente.length > 0">
-    
+
+  <!-- Tu tabla de datos -->
+  <div *ngIf="filteredDatosAppCliente && filteredDatosAppCliente.length > 0">
     <div class="table-container">
       <table>
         <tr>
@@ -35,19 +39,21 @@
           <th>Email</th>
           <th>Teléfono</th>
         </tr>
-        <tr *ngFor="let dato of datosAppCliente">
+        <tr *ngFor="let dato of filteredDatosAppCliente">
           <td>{{ dato.rut_cliente }}</td>
           <td>{{ dato.nombre_cliente }}</td>
           <td>{{ dato.apePaterno }}</td>
           <td>{{ dato.apeMaterno }}</td>
-          <td>{{ dato.email }}</td>
+          <a href="mailto:{{ dato.email }}" style="color: blue;">{{ dato.email }}</a>
           <td>{{ dato.fono }}</td>
         </tr>
       </table>
     </div>
   </div>
-  <div *ngIf="!datosAppCliente || datosAppCliente.length === 0">
-    <p>No se encontraron datos de app_cliente.</p>
+
+  <div *ngIf="!filteredDatosAppCliente || filteredDatosAppCliente.length === 0">
+    <p>No se encontraron coincidencias.</p>
   </div>
 </ion-content>
+
 
