@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { MenuController,NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-the-login',
@@ -12,8 +12,16 @@ export class TheLoginPage {
 
   constructor(
     private navCtrl: NavController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private menuController: MenuController
   ) {}
+  ionViewWillEnter() {
+    this.menuController.enable(false, 'main-menu'); // Reemplaza 'menuID' con el ID de tu menú
+  }
+  ionViewDidLeave() {
+    this.menuController.enable(true, 'main-menu');
+  }
+
 
   async login() {
     // Verifica las credenciales directamente en tu aplicación
