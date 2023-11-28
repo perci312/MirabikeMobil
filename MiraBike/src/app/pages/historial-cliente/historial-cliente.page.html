@@ -17,13 +17,19 @@
       <ion-input placeholder="Filtrar Rut" [(ngModel)]="searchRut"></ion-input>
     </ion-col>
     <ion-col size="2">
-      <!-- Botón para realizar la búsqueda con tamaño pequeño -->
-      <ion-button expand="full" size="small" class="search-button" (click)="filterData()">Buscar</ion-button>
+      <!-- Botón para realizar la búsqueda con tamaño pequeño y icono de búsqueda -->
+      <ion-button expand="full" size="small" class="search-button" (click)="filterData()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
     </ion-col>
+    
     <ion-col size="2">
-      <!-- Botón de reset -->
-      <ion-button expand="full" size="small" class="reset-button" (click)="resetFilters()">Reset</ion-button>
+      <!-- Botón de reset con icono de reset -->
+      <ion-button expand="full" size="small" class="reset-button" (click)="resetFilters()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
     </ion-col>
+    
   </ion-row>
   
 
