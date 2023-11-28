@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="primary">Lista de Trabajadores</ion-title>
+    <ion-title color="primary">Lista de Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,20 +12,28 @@
     <div class="table-container">
       <table>
         <tr>
-          <th>Nombre de Usuario</th>
-          <th>RUT del Colaborador</th>
-          <th>Nombre Completo</th>
-          <th>Teléfono</th>
-          <th>Email</th>
-          <th>Tipo de Perfil</th>
+          <!--<th>Fecha de registro</th>-->
+          <th>Nombre del producto</th>
+          <th (click)="ordenarDatos('stock')">
+            Stock
+            <ion-icon *ngIf="ordenAscendente && campoOrdenado === 'stock'" name="arrow-up"></ion-icon>
+            <ion-icon *ngIf="!ordenAscendente && campoOrdenado === 'stock'" name="arrow-down"></ion-icon>
+          </th>
+          <th>Marca</th>
+          <th>Descripcion</th>
+          <th>Precio unitario</th>
+          
         </tr>
         <tr *ngFor="let trabajador of datosAppPersona">
-          <td>{{ trabajador.nomUsuario }}</td>
-          <td>{{ trabajador.rut_colaborador }}</td>
-          <td>{{ trabajador.nombre_completo }}</td>
-          <td>{{ trabajador.fono }}</td>
-          <td>{{ trabajador.email }}</td>
-          <td>{{ trabajador.tipo_perfil }}</td>
+          <!--<td>{{ trabajador.fecha_registro }}</td>-->
+          <td>{{ trabajador.nombre_producto }}</td>
+          <td [ngClass]="{'stock-rojo': trabajador.stock < 6, 'stock-verde': trabajador.stock >= 6}">
+            {{ trabajador.stock }}
+          </td>
+          <td>{{ trabajador.marca }}</td>
+          <td>{{ trabajador.descripcion }}</td>
+          <td>{{ trabajador.precio_unitario }}</td>
+          
         </tr>
       </table>
     </div>
@@ -34,3 +42,4 @@
     <p>No se encontraron datos de trabajadores.</p>
   </div>
 </ion-content>
+

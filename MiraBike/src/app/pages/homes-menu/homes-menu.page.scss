@@ -3,6 +3,15 @@ ion-content{
     --background:linear-gradient(#a7a7a7,#a7a7a7);
 }
 
+.boton-cerrar-sesion-container {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; /* Ajusta el índice z para asegurarte de que esté por encima de otros elementos */
+}
+
+
 image-container {
     text-align: center;
     margin-top: 20px;
@@ -99,9 +108,4 @@ button-text {
 }
 
 /* Ajustar la posición del botón hacia abajo */
-#boton-cerrar-sesion {
-  position: absolute;
-  bottom: 120px; /* Ajustar la distancia desde la parte inferior */
-  left: 50%; /* Centrar horizontalmente */
-  transform: translateX(-50%); /* Centrar horizontalmente */
-}
+

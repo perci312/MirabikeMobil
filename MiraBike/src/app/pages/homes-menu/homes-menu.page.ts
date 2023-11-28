@@ -20,6 +20,7 @@ export class HomesMenuPage implements OnInit {
   private dataSubscription: Subscription;
 
   ngOnInit(): void {
+    
     //this.obtenerDatosVentas();
   }
 
