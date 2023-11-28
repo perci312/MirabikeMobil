@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TrabajadoresPage implements OnInit {
   datosAppPersona: any[] = [];
+  ordenAscendente: boolean = true;
+  campoOrdenado: string = 'stock';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +18,7 @@ export class TrabajadoresPage implements OnInit {
   }
 
   obtenerDatosAppPersona() {
-    const apiUrl = 'https://5o2imzmocc.execute-api.us-east-2.amazonaws.com/persona'; // Reemplaza con la URL de tu API de AWS Lambda
+    const apiUrl = 'https://0pekvv5h38.execute-api.us-east-2.amazonaws.com/producto'; // Reemplaza con la URL de tu API de AWS Lambda
 
     this.http.get(apiUrl).subscribe(
       (response: any) => {
@@ -31,6 +33,22 @@ export class TrabajadoresPage implements OnInit {
         console.error('Error al obtener datos de app_persona:', error);
       }
     );
+  }
+
+  ordenarDatos(campo: string) {
+    this.datosAppPersona.sort((a, b) => {
+      const valorA = a[campo];
+      const valorB = b[campo];
+  
+      if (typeof valorA === 'string' && typeof valorB === 'string') {
+        return this.ordenAscendente ? valorA.localeCompare(valorB) : valorB.localeCompare(valorA);
+      } else {
+        return this.ordenAscendente ? valorA - valorB : valorB - valorA;
+      }
+    });
+  
+    // Cambia el estado de ordenamiento para la próxima vez
+    this.ordenAscendente = !this.ordenAscendente;
   }
 }
 

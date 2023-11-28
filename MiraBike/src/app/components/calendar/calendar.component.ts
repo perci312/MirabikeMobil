@@ -112,10 +112,10 @@ export class CalendarComponent implements OnInit {
     // Cambiar colores según el estado
     switch (eventData.estado) {
       case 0:
-        backgroundColor = 'green';
+        backgroundColor = 'black';
         break;
       case 1:
-        backgroundColor = 'black';
+        backgroundColor = 'green';
         break;
       case 2:
         backgroundColor = 'purple';
@@ -137,11 +137,11 @@ export class CalendarComponent implements OnInit {
     if (estado !== undefined) {
       switch (estado) {
         case 0:
-          return 'Terminado';
-        case 1:
           return 'En proceso';
+        case 1:
+          return 'Terminado';
         case 2:
-          return 'En espera';
+          return 'Atrasado';
         default:
           return 'Desconocido';
       }
