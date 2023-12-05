@@ -11,11 +11,15 @@ import type { ChartDataset, ChartOptions } from 'chart.js';
 export class HistorialVentasPage implements OnInit {
   public barChart: Chart;
   datosVentas: any[] = [];
+  nombresMeses: string[] = [];
+  mesSeleccionado: string;
+  productosMasVendidos: any[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.obtenerDatosVentas();
+    this.nombresMeses = this.obtenerNombresMeses();
   }
 
   ngOnDestroy(): void {
@@ -94,12 +98,29 @@ export class HistorialVentasPage implements OnInit {
     return nombresMeses[mes];
   }
 
+  obtenerNombresMeses(): string[] {
+    return [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ];
+  }
+
   inicializarGraficoBarras() {
     // Verifica si ya existe un gráfico y destrúyelo
     if (this.barChart) {
       this.barChart.destroy();
     }
-  
+
     // Borra el contenido del elemento canvas
     const canvas = <HTMLCanvasElement>document.getElementById('barChart');
     const context = canvas.getContext('2d');
@@ -114,7 +135,7 @@ export class HistorialVentasPage implements OnInit {
         borderWidth: 1,
       },
     ];
-  
+
     const options: ChartOptions = {
       scales: {
         y: {
@@ -122,7 +143,7 @@ export class HistorialVentasPage implements OnInit {
         },
       },
     };
-  
+
     // Crea un nuevo gráfico después de destruir el existente
     this.barChart = new Chart('barChart', {
       type: 'bar',
@@ -133,7 +154,41 @@ export class HistorialVentasPage implements OnInit {
       options: options,
     });
   }
+
+  seleccionarMes(event: any) {
+    // Captura el mes seleccionado desde el evento
+    this.mesSeleccionado = event.detail.value;
+
+    // Filtra los productos por el mes seleccionado
+    const productosMes = this.datosVentas
+      .filter((venta) => {
+        const fechaVenta = new Date(venta.fecha);
+        return fechaVenta.getMonth() === this.nombresMeses.indexOf(this.mesSeleccionado);
+      })
+      .map((venta) => venta.nombre_producto);
+
+    // Calcula el conteo de cada producto
+    const conteoProductos = productosMes.reduce((conteo, producto) => {
+      conteo[producto] = (conteo[producto] || 0) + 1;
+      return conteo;
+    }, {});
+
+    // Ordena los productos por cantidad vendida de mayor a menor
+    this.productosMasVendidos = Object.keys(conteoProductos)
+      .map((producto) => ({ nombre: producto, cantidad: conteoProductos[producto] }))
+      .sort((a, b) => b.cantidad - a.cantidad);
+
+    // Muestra el Top 3 de productos o un mensaje si no hay productos
+    if (this.productosMasVendidos.length > 0) {
+      console.log(`Top 3 de productos más vendidos en ${this.mesSeleccionado}:`);
+      console.log(this.productosMasVendidos.slice(0, 3));
+    } else {
+      console.log(`No se encontraron productos vendidos en ${this.mesSeleccionado}.`);
+    }
+  }
 }
+
+
 
 
 

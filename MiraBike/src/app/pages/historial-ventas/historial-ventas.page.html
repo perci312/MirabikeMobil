@@ -8,15 +8,33 @@
 </ion-header>
 
 <ion-content>
-
   <!-- Elemento para mostrar el gráfico de barras -->
   <div class="chart-container">
     <canvas id="barChart"></canvas>
   </div>
-  
 
-  
+  <!-- Menú desplegable para seleccionar el mes -->
+  <ion-item>
+    <ion-label>Meses</ion-label>
+    <ion-select (ionChange)="seleccionarMes($event)">
+      <ion-select-option *ngFor="let mes of nombresMeses" [value]="mes">{{ mes }}</ion-select-option>
+    </ion-select>
+  </ion-item>
 
+  <!-- Mostrar el Top 3 de productos más vendidos -->
+  <div *ngIf="productosMasVendidos.length > 0; else noProductos">
+    <h2>Top 3 Productos:</h2>
+    <ion-list>
+      <ion-item *ngFor="let producto of productosMasVendidos.slice(0, 3)">
+        {{ producto.nombre }} - Cantidad vendida: {{ producto.cantidad }}
+      </ion-item>
+    </ion-list>
+  </div>
+  <ng-template #noProductos>
+    <p>Seleccione para conocer los productos más vendidos {{ mesSeleccionado }}.</p>
+  </ng-template>
 </ion-content>
+
+
 
 
