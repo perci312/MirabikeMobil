@@ -22,16 +22,16 @@
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
     </ion-col>
-    
+
     <ion-col size="2">
       <!-- Botón de reset con icono de reset -->
       <ion-button expand="full" size="small" class="reset-button" (click)="resetFilters()">
         <ion-icon name="refresh-outline"></ion-icon>
       </ion-button>
     </ion-col>
-    
+
   </ion-row>
-  
+
 
   <!-- Tu tabla de datos -->
   <div *ngIf="filteredDatosAppCliente && filteredDatosAppCliente.length > 0">
@@ -50,8 +50,10 @@
           <td>{{ dato.nombre_cliente }}</td>
           <td>{{ dato.apePaterno }}</td>
           <td>{{ dato.apeMaterno }}</td>
-          <a href="mailto:{{ dato.email }}" style="color: blue;">{{ dato.email }}</a>
-          <td>{{ dato.fono }}</td>
+          <td><a href="mailto:{{ dato.email }}" style="color: blue;">{{ dato.email }}</a></td>
+          <td>
+            <a [href]="'https://api.whatsapp.com/send?phone=+56' + dato.fono" target="_blank">+56{{ dato.fono }}</a>
+          </td>
         </tr>
       </table>
     </div>
@@ -61,5 +63,6 @@
     <p>No se encontraron coincidencias.</p>
   </div>
 </ion-content>
+
 
 

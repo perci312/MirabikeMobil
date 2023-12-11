@@ -13,17 +13,25 @@
     <canvas id="barChart"></canvas>
   </div>
 
-  <!-- Menú desplegable para seleccionar el mes -->
+  <!--seleccionar el año -->
   <ion-item>
-    <ion-label>Meses</ion-label>
-    <ion-select (ionChange)="seleccionarMes($event)">
+    <ion-label>Año</ion-label>
+    <ion-select [(ngModel)]="anioSeleccionado" (ionChange)="seleccionarAnio($event)">
+      <ion-select-option *ngFor="let anio of anios" [value]="anio">{{ anio }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!--seleccionar el mes -->
+  <ion-item>
+    <ion-label>Mes</ion-label>
+    <ion-select [(ngModel)]="mesSeleccionado" placeholder="Mes" (ionChange)="seleccionarMes($event)">
       <ion-select-option *ngFor="let mes of nombresMeses" [value]="mes">{{ mes }}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <!-- Mostrar el Top 3 de productos más vendidos -->
   <div *ngIf="productosMasVendidos.length > 0; else noProductos">
-    <h2>Top 3 Productos:</h2>
+    <h2>-Top 3 Productos más vendidos-</h2>
     <ion-list>
       <ion-item *ngFor="let producto of productosMasVendidos.slice(0, 3)">
         {{ producto.nombre }} - Cantidad vendida: {{ producto.cantidad }}
@@ -31,9 +39,10 @@
     </ion-list>
   </div>
   <ng-template #noProductos>
-    <p>Seleccione para conocer los productos más vendidos {{ mesSeleccionado }}.</p>
+    <p>Seleccione para conocer los productos más vendidos {{ mesSeleccionado }} ({{ anioSeleccionado }}).</p>
   </ng-template>
 </ion-content>
+
 
 
 

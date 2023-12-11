@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { Line_chartComponent } from './components/line_chart/line_chart.component';
-import { Bar_chartComponent } from './components/bar_chart/bar_chart.component';
+
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'the-login', pathMatch: 'full' },
   { path: 'login',
-   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+   loadChildren: () => import('./pages/the-login/the-login.module').then( m => m.TheLoginPageModule)},
   {
     path: 'historial-cliente',
     loadChildren: () => import('./pages/historial-cliente/historial-cliente.module').then( m => m.HistorialClientePageModule)
@@ -53,10 +53,7 @@ const routes: Routes = [
     path: 'line_chart', 
     component: Line_chartComponent,
   },
-  {
-    path: 'bar_chart', 
-    component: Bar_chartComponent,
-  },
+
 ];
 @NgModule({
   imports: [

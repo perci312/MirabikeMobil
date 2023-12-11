@@ -1,6 +1,6 @@
-ion-content{
-    font-family: 'Poppins', sans-serif;
-    --background:linear-gradient(#a7a7a7,#a7a7a7);
+ion-content {
+  font-family: 'Poppins', sans-serif;
+  --background: linear-gradient(#a7a7a7, #a7a7a7);
 }
 
 .boton-cerrar-sesion-container {
@@ -11,101 +11,100 @@ ion-content{
   z-index: 2; /* Ajusta el índice z para asegurarte de que esté por encima de otros elementos */
 }
 
-
 image-container {
-    text-align: center;
-    margin-top: 20px;
-  }
+  text-align: center;
+  margin-top: 20px;
+}
 
 ion-card {
   width: 100%;
   height: 160px;
   box-shadow: none;
   border-radius: 12px;
+  background: url('../../../assets/imagen/fondo.jpeg') center/cover no-repeat; /* Ajusta la ruta según tu estructura de carpetas */
 
-    img{
-      object-fit: cover;
-      width: 100%;
-      transform: scale(1.1, 1.1) rotate(1deg);
-      transition: 600ms all ease-in-out;
-    }
+  img {
+    object-fit: cover;
+    width: 100%;
+    transform: scale(1.1, 1.1) rotate(1deg);
+    transition: 600ms all ease-in-out;
+  }
 
+  p {
+    font-size: 18px; /* Ajusta el tamaño según tus preferencias */
+    color: white; /* Cambia el color del texto para que sea legible sobre el fondo */
+    text-align: center; /* Centra el texto */
+    padding: 0px 20px; /* Añade espacio alrededor del contenido */
+    margin-bottom: 5px; /* Ajusta el margen inferior para reducir el espacio entre los párrafos */
+  }
 }
-  
-.swiper-container {
-  transform: scale(1.05,1.05);
 
-  ion-card{
+.swiper-container {
+  transform: scale(1.05, 1.05);
+
+  ion-card {
     img {
       transform: scale(1, 1);
     }
   }
-
 }
 
 .swiper-slide {
-  transition: 400ms all ease-in-out;  
+  transition: 400ms all ease-in-out;
 }
 
 .swiper-pagination {
-  bottom: 10px;  // Ajusta la posición vertical de los puntos según sea necesario
+  bottom: 10px; // Ajusta la posición vertical de los puntos según sea necesario
 }
 
 .swiper-pagination-bullet {
-  background: #ccc;  // Color de los puntos inactivos
-  width: 8px;  // Tamaño de los puntos inactivos
+  background: #ccc; // Color de los puntos inactivos
+  width: 8px; // Tamaño de los puntos inactivos
   height: 8px;
-  margin: 0 4px;  // Espacio entre los puntos
+  margin: 0 4px; // Espacio entre los puntos
 }
 
 .swiper-pagination-bullet-active {
-  background: #333;  // Color del punto activo
+  background: #333; // Color del punto activo
 }
-  
+
 oval-button {
-    background-color: #2d4862; /* Color azul oscuro */
-    width: 60px; /* Ancho del botón */
-    height: 60px; /* Alto del botón */
-    border-radius: 80% !important; /* Hace que el botón tenga forma ovalada */
-    margin: 5px; /* Espacio entre los botones */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Agregar margen (padding) a los elementos ion-col */
+  background-color: #2d4862; /* Color azul oscuro */
+  width: 60px; /* Ancho del botón */
+  height: 60px; /* Alto del botón */
+  border-radius: 80% !important; /* Hace que el botón tenga forma ovalada */
+  margin: 5px; /* Espacio entre los botones */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 ion-col {
-    padding: 10px; /* Espacio entre las imágenes y los botones */
-  }
+  padding: 10px; 
+}
 
 button-box {
-    text-align: left; /* Alinea el contenido hacia la izquierda */
-    margin-left: 1px; /* Agrega un margen izquierdo para ajustar la posición */
-  }
-  
-ion-icon {
-    font-size: 30px; /* Tamaño del icono */
-    color: white; /* Color del icono */
-  }
-
-.button-text {
-    font-size: 0.5em; /* Tamaño del texto en unidades em */
-    color: white; /* Color del texto */
-    margin-top: 2px; /* Espacio entre el ícono y el texto */
-    margin-left: 5px; /* Ajusta el margen izquierdo para mover el texto a la derecha */
-  }
-  
-button-text {
-    margin-top: 5px; /* Espacio entre el ícono y el texto */
-    margin-left: 1px; /* Ajusta el margen izquierdo para mover el texto a la derecha */
-  }
-  
-  /* Reducir el tamaño del botón */
-.boton-cerrar-sesion {
-  font-size: 12px; /* Tamaño de fuente más pequeño */
-  padding: 6px 12px; /* Ajustar el relleno (padding) según tus preferencias */
+  text-align: left; 
+  margin-left: 1px; 
 }
 
-/* Ajustar la posición del botón hacia abajo */
+ion-icon {
+  font-size: 30px; 
+  color: white; 
+}
+
+.button-text {
+  font-size: 0.5em;
+  color: white;
+  margin-top: 2px; 
+  margin-left: 5px; 
+}
+
+
+.boton-cerrar-sesion {
+  font-size: 12px; 
+  padding: 6px 12px;
+}
 

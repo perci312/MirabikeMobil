@@ -19,25 +19,16 @@
   <ion-content class="ion-padding">
 
     <swiper-container>
-
       <swiper-slide>
-        <ion-card>
-          <img src="/assets/imagen/fondo.jpeg">
+        <ion-card class="custom-card">
+          <div class="slide-content">
+            <p>Total de clientes : {{ totalClientes }}</p>
+            <p>Total de productos : {{ totalProductos }}</p>
+            <p>Cantidad de productos por vencer: {{ productosPorVencer }}</p>
+            <p>Cantidad de ventas este mes: {{ cantidadVentasMesActual }}</p>
+          </div>
         </ion-card>
       </swiper-slide>
-
-      <swiper-slide>
-        <ion-card>
-          <img src="/assets/imagen/fondo.jpeg">
-        </ion-card>
-      </swiper-slide>
-
-      <swiper-slide>
-        <ion-card>
-          <img src="/assets/imagen/fondo.jpeg">
-        </ion-card>
-      </swiper-slide>
-    
     </swiper-container>
     
 

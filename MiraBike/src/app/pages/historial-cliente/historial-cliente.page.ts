@@ -18,6 +18,7 @@ export class HistorialClientePage implements OnInit {
     this.obtenerDatosAppCliente();
   }
 
+  //Obtener datos de la api
   obtenerDatosAppCliente() {
     const apiUrl = 'https://tnlkxyinql.execute-api.us-east-2.amazonaws.com/cliente';
 
@@ -26,7 +27,7 @@ export class HistorialClientePage implements OnInit {
         const responseBody = JSON.parse(response.body);
         if (Array.isArray(responseBody)) {
           this.datosAppCliente = responseBody;
-          this.filteredDatosAppCliente = this.datosAppCliente; // Inicialmente, ambos son iguales
+          this.filteredDatosAppCliente = this.datosAppCliente; 
         } else {
           console.error('Error: Los datos no están en el formato esperado.');
         }
@@ -43,10 +44,10 @@ export class HistorialClientePage implements OnInit {
       (dato.rut_cliente || '').toString().startsWith(this.searchRut)
     );
   }
-
+  //resetear
   resetFilters() {
-    this.searchRut = ''; // Limpiar el campo de búsqueda
-    this.filteredDatosAppCliente = this.datosAppCliente; // Restablecer la lista completa
+    this.searchRut = ''; 
+    this.filteredDatosAppCliente = this.datosAppCliente; 
   }
 }
 

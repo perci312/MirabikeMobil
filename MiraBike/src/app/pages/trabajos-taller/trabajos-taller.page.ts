@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // Asegúrate de importar HttpClient si lo necesitas
+import { HttpClient } from '@angular/common/http'; 
 import { CalendarComponent } from '../../components/calendar/calendar.component';
 
 
@@ -10,26 +10,27 @@ import { CalendarComponent } from '../../components/calendar/calendar.component'
 })
 export class TrabajosTallerPage implements OnInit {
   
-  datosAppTaller: any[] = []; // Define la propiedad para almacenar los datos
+  datosAppTaller: any[] = []; 
 
   
 
 
 
-  constructor(private http: HttpClient) {} // Asegúrate de inyectar HttpClient si lo necesitas
+  constructor(private http: HttpClient) {} 
 
   ngOnInit() {
     this.obtenerDatosAppTaller();
   }
 
+  //Obtiene los dato de la api taller
   obtenerDatosAppTaller() {
-    const apiUrl = 'https://de6yznumid.execute-api.us-east-2.amazonaws.com/taller'; // Reemplaza por la URL de tu API de taller
+    const apiUrl = 'https://de6yznumid.execute-api.us-east-2.amazonaws.com/taller'; 
 
     this.http.get(apiUrl).subscribe(
       (response: any) => {
         const responseBody = JSON.parse(response.body);
         if (Array.isArray(responseBody)) {
-          this.datosAppTaller = responseBody; // Asigna los datos a la propiedad
+          this.datosAppTaller = responseBody; 
         } else {
           console.error('Error: Los datos no están en el formato esperado.');
         }

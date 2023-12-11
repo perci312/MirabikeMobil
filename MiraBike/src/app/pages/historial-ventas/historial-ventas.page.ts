@@ -12,7 +12,10 @@ export class HistorialVentasPage implements OnInit {
   public barChart: Chart;
   datosVentas: any[] = [];
   nombresMeses: string[] = [];
+  meses: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  anios: number[] = [2022,2023, 2024, 2025]; 
   mesSeleccionado: string;
+  anioSeleccionado: number = 2023; 
   productosMasVendidos: any[] = [];
 
   constructor(private http: HttpClient) {}
@@ -22,12 +25,7 @@ export class HistorialVentasPage implements OnInit {
     this.nombresMeses = this.obtenerNombresMeses();
   }
 
-  ngOnDestroy(): void {
-    if (this.barChart) {
-      this.barChart.destroy();
-    }
-  }
-
+  //Obtiene los datos desde la api de venta
   obtenerDatosVentas() {
     const apiUrl = 'https://utgtbwb3r5.execute-api.us-east-2.amazonaws.com/venta';
 
@@ -49,6 +47,7 @@ export class HistorialVentasPage implements OnInit {
     );
   }
 
+  //Calcula los ultimos 10 meses antes de la fecha de ahora
   calcularTotalUltimosMeses(): number[] {
     const totalUltimosMeses = Array(10).fill(0);
     const fechaActual = new Date();
@@ -57,7 +56,7 @@ export class HistorialVentasPage implements OnInit {
       const mesActual = fechaActual.getMonth() - i;
       const ventasMes = this.datosVentas.filter((venta) => {
         const fechaVenta = new Date(venta.fecha);
-        return fechaVenta.getMonth() === mesActual;
+        return fechaVenta.getMonth() === mesActual && fechaVenta.getFullYear() === this.anioSeleccionado;
       });
 
       totalUltimosMeses[9 - i] = ventasMes.reduce((total, venta) => total + venta.total, 0);
@@ -115,8 +114,9 @@ export class HistorialVentasPage implements OnInit {
     ];
   }
 
+
   inicializarGraficoBarras() {
-    // Verifica si ya existe un gráfico y destrúyelo
+    // Verifica si ya existe un gráfico y lo destuye , esto esta porsiacaso , ya que antes usaba más graficos en distintas page
     if (this.barChart) {
       this.barChart.destroy();
     }
@@ -128,7 +128,7 @@ export class HistorialVentasPage implements OnInit {
 
     const data: ChartDataset[] = [
       {
-        label: 'Total de ventas últimos 10 meses',
+        label: `Total de ventas últimos 10 meses`,
         data: this.calcularTotalUltimosMeses(),
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
@@ -144,7 +144,7 @@ export class HistorialVentasPage implements OnInit {
       },
     };
 
-    // Crea un nuevo gráfico después de destruir el existente
+    // Crea un nuevo gráfico después de destruir el existente , esto esta porsiacaso , ya que antes usaba más graficos en distintas page
     this.barChart = new Chart('barChart', {
       type: 'bar',
       data: {
@@ -159,11 +159,14 @@ export class HistorialVentasPage implements OnInit {
     // Captura el mes seleccionado desde el evento
     this.mesSeleccionado = event.detail.value;
 
-    // Filtra los productos por el mes seleccionado
+    // Filtra los productos por el mes y año seleccionados
     const productosMes = this.datosVentas
       .filter((venta) => {
         const fechaVenta = new Date(venta.fecha);
-        return fechaVenta.getMonth() === this.nombresMeses.indexOf(this.mesSeleccionado);
+        return (
+          fechaVenta.getMonth() === this.nombresMeses.indexOf(this.mesSeleccionado) &&
+          fechaVenta.getFullYear() === this.anioSeleccionado
+        );
       })
       .map((venta) => venta.nombre_producto);
 
@@ -180,13 +183,22 @@ export class HistorialVentasPage implements OnInit {
 
     // Muestra el Top 3 de productos o un mensaje si no hay productos
     if (this.productosMasVendidos.length > 0) {
-      console.log(`Top 3 de productos más vendidos en ${this.mesSeleccionado}:`);
+      console.log(`Top 3 de productos más vendidos en ${this.mesSeleccionado} (${this.anioSeleccionado}):`);
       console.log(this.productosMasVendidos.slice(0, 3));
     } else {
-      console.log(`No se encontraron productos vendidos en ${this.mesSeleccionado}.`);
+      console.log(`No se encontraron productos vendidos en ${this.mesSeleccionado} (${this.anioSeleccionado}).`);
     }
   }
+
+  seleccionarAnio(event: any) {
+    // Captura el año seleccionado desde el evento
+    this.anioSeleccionado = event.detail.value;
+
+    // Actualiza el gráfico de barras con los datos del nuevo año seleccionado
+    this.inicializarGraficoBarras();
+  }
 }
+
 
 
 

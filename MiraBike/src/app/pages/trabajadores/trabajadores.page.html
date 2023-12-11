@@ -12,7 +12,7 @@
     <div class="table-container">
       <table>
         <tr>
-          <!--<th>Fecha de registro</th>-->
+          
           <th>Nombre del producto</th>
           <th (click)="ordenarDatos('stock')">
             Stock
@@ -25,7 +25,7 @@
           
         </tr>
         <tr *ngFor="let trabajador of datosAppPersona">
-          <!--<td>{{ trabajador.fecha_registro }}</td>-->
+          
           <td>{{ trabajador.nombre_producto }}</td>
           <td [ngClass]="{'stock-rojo': trabajador.stock < 6, 'stock-verde': trabajador.stock >= 6}">
             {{ trabajador.stock }}

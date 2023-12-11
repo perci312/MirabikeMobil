@@ -17,8 +17,9 @@ export class TrabajadoresPage implements OnInit {
     this.obtenerDatosAppPersona();
   }
 
+  //Ontiene los datos de la api Producto
   obtenerDatosAppPersona() {
-    const apiUrl = 'https://0pekvv5h38.execute-api.us-east-2.amazonaws.com/producto'; // Reemplaza con la URL de tu API de AWS Lambda
+    const apiUrl = 'https://0pekvv5h38.execute-api.us-east-2.amazonaws.com/producto'; 
 
     this.http.get(apiUrl).subscribe(
       (response: any) => {
@@ -35,6 +36,7 @@ export class TrabajadoresPage implements OnInit {
     );
   }
 
+  //Ordena de datos de mayor a menor o de menor a mayor
   ordenarDatos(campo: string) {
     this.datosAppPersona.sort((a, b) => {
       const valorA = a[campo];

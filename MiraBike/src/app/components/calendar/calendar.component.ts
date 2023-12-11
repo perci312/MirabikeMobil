@@ -38,7 +38,7 @@ export class CalendarComponent implements OnInit {
       plugins: [dayGridPlugin],
       events: [],
       eventClick: this.handleEventClick.bind(this),
-      eventDidMount: this.eventDidMount.bind(this) // Usamos eventDidMount en lugar de eventRender
+      eventDidMount: this.eventDidMount.bind(this) 
     };
   }
 
@@ -47,6 +47,7 @@ export class CalendarComponent implements OnInit {
     this.obtenerDatosAppTaller();
   }
 
+  //Obtiene los datos de la api taller
   obtenerDatosAppTaller() {
     const apiUrl = 'https://de6yznumid.execute-api.us-east-2.amazonaws.com/taller';
     this.http.get(apiUrl).subscribe(
@@ -112,7 +113,7 @@ export class CalendarComponent implements OnInit {
     // Cambiar colores según el estado
     switch (eventData.estado) {
       case 0:
-        backgroundColor = 'black';
+        backgroundColor = 'dark yellow';
         break;
       case 1:
         backgroundColor = 'green';

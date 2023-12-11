@@ -16,7 +16,7 @@ export class TheLoginPage {
     private menuController: MenuController
   ) {}
   ionViewWillEnter() {
-    this.menuController.enable(false, 'main-menu'); // Reemplaza 'menuID' con el ID de tu menú
+    this.menuController.enable(false, 'main-menu'); 
   }
   ionViewDidLeave() {
     this.menuController.enable(true, 'main-menu');
