@@ -11,7 +11,7 @@ interface EventData {
   end: Date;
   fecha_ingreso: string;
   fecha_termino: string;
-  tipo_arreglo?: string;
+  tipo_arreglo?: number;
   valor?: number;
   descripcion?: string;
   estado?: number;
@@ -91,7 +91,7 @@ export class CalendarComponent implements OnInit {
       end: arg.event.end,
       fecha_ingreso: moment(eventData.start).format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
       fecha_termino: moment(eventData.end).format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
-      tipo_arreglo: eventData.tipo_arreglo !== undefined ? eventData.tipo_arreglo : 'Valor por defecto',
+      tipo_arreglo: eventData.tipo_arreglo !== undefined ? eventData.tipo_arreglo : 0, 
       valor: eventData.valor !== undefined ? eventData.valor : 0,
       descripcion: eventData.descripcion !== undefined ? eventData.descripcion : 'Valor por defecto',
       estado: eventData.estado !== undefined ? eventData.estado : 0,
@@ -105,15 +105,17 @@ export class CalendarComponent implements OnInit {
 
   eventDidMount(info: any) {
     const eventData = info.event.extendedProps as EventData;
-
+  
     // Colores predeterminados
     let backgroundColor = 'blue';
     let textColor = 'white';
-
+  
     // Cambiar colores según el estado
     switch (eventData.estado) {
       case 0:
-        backgroundColor = 'dark yellow';
+        backgroundColor = '#FFD700'; // Amarillo oscuro en formato hexadecimal
+        // Cambiar el color del texto a negro cuando el fondo es amarillo oscuro
+        textColor = 'black';
         break;
       case 1:
         backgroundColor = 'green';
@@ -122,18 +124,22 @@ export class CalendarComponent implements OnInit {
         backgroundColor = 'purple';
         break;
     }
-
-    // Cambiar color si la fecha de término es menor al día de hoy
-    const today = moment();
-    const eventEnd = moment(info.event.end);
-    if (eventEnd.isBefore(today, 'day')) {
-      backgroundColor = 'red';
+  
+    // Cambiar color solo si la fecha de término es menor al día de hoy y el estado es 'En proceso'
+    if (eventData.estado === 0) {
+      const today = moment();
+      const eventEnd = moment(info.event.end);
+      if (eventEnd.isBefore(today, 'day')) {
+        backgroundColor = 'red';
+      }
     }
-
+  
     // Aplicar estilos
     info.el.style.backgroundColor = backgroundColor;
     info.el.style.color = textColor;
   }
+  
+
   getEstadoText(estado: number | undefined): string {
     if (estado !== undefined) {
       switch (estado) {
@@ -146,6 +152,36 @@ export class CalendarComponent implements OnInit {
         default:
           return 'Desconocido';
       }
+    } else {
+      return 'No definido';
+    }
+  }
+
+  getTipoArregloText(tipoArreglo: number | undefined): string {
+    if (tipoArreglo !== undefined) {
+      switch (tipoArreglo) {
+        case 0:
+          return 'Ajustes básicos';
+        case 1:
+          return 'Cambio de neumáticos';
+        case 2:
+          return 'Cambio de frenos';
+        case 3:
+          return 'Reparación de cadenas, pedales y bielas';
+        case 4:
+          return 'Ajuste de suspensión';
+        default:
+          return 'Desconocido';
+      }
+    } else {
+      return 'No definido';
+    }
+  }
+  
+  
+  getEstadoPagoText(estadoPago: number | undefined): string {
+    if (estadoPago !== undefined) {
+      return estadoPago === 1 ? 'Pagado' : 'Pendiente';
     } else {
       return 'No definido';
     }

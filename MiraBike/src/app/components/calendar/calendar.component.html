@@ -15,21 +15,16 @@
     <p>Fin: {{ eventDetails.end | date: 'medium' }}</p>
     
     <!-- Verificación de existencia de propiedades -->
-    <p *ngIf="eventDetails.tipo_arreglo !== undefined">Tipo_arreglo: {{ eventDetails.tipo_arreglo }}</p>
+    <p *ngIf="eventDetails.tipo_arreglo !== undefined">Tipo_arreglo: {{ getTipoArregloText(eventDetails.tipo_arreglo) }}</p>
     <p *ngIf="eventDetails.valor !== undefined">Valor: {{ eventDetails.valor }}</p>
     <p *ngIf="eventDetails.descripcion !== undefined">Descripcion: {{ eventDetails.descripcion }}</p>
     <p *ngIf="eventDetails.estado !== undefined">Estado: {{ getEstadoText(eventDetails.estado) }}</p>
     <p *ngIf="eventDetails.modelo_bicicleta !== undefined">Modelo de la bicicleta: {{ eventDetails.modelo_bicicleta }}</p>
-    <p *ngIf="eventDetails.estado_pago !== undefined">Estado de pago: {{ eventDetails.estado_pago }}</p>
+    <p *ngIf="eventDetails.estado_pago !== undefined">Estado de pago: {{ getEstadoPagoText(eventDetails.estado_pago) }}</p>
     <p *ngIf="eventDetails.nombre_cliente !== undefined">Cliente: {{ eventDetails.nombre_cliente }}</p>
-    <p *ngIf="eventDetails.fono !== undefined">
-      Teléfono:
-      <a href="https://wa.me/56{{ eventDetails.fono }}" target="_blank">
-        <ion-icon name="logo-whatsapp"></ion-icon>
-        +56{{ eventDetails.fono }}
-      </a>
-    </p>
+    <p *ngIf="eventDetails.fono !== undefined">Teléfono: <a href="https://wa.me/{{ eventDetails.fono }}" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon>+56{{ eventDetails.fono }}</a></p>
     <p *ngIf="eventDetails.email !== undefined">Email: <a href="mailto:{{ eventDetails.email }}">{{ eventDetails.email }}</a></p>
+
   </div>
 </ion-content>
 
